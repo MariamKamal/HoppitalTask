@@ -1,0 +1,137 @@
+﻿@model Patient
+@{
+    ViewData["Title"] = "PatiientHome";
+}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col-sm-5">
+                    <h3>@Model.PartientName</h3>
+                </div>
+                <div class="col-sm-7">
+                    <img src="~/images/@Model.Photo"
+                         height="350" width="300"
+                         class="rounded"
+                         asp-append-version="true" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+
+                    <h4 class="text-primary mt-3"> Genral Info</h4>
+
+
+                    <span class="ml-2 font-weight-bold ">Phone : </span>
+                    <label>@Model.Phone</label><br />
+                    <span class="ml-2 font-weight-bold">Email : </span>
+                    <label>@Model.Email</label><br />
+                    <span class="ml-2 font-weight-bold">BloodGroub : </span>
+
+                    <label>@Model.BloodGroub</label><br />
+                    <span class="ml-2 font-weight-bold">Age : </span>
+
+                    <label>@Model.Age</label><br />
+                    <br />
+                </div>
+                <div class="col-sm-6">
+                    <a asp-action="Delete" asp-route-Id="@Model.PatientId" class="btn btn-outline-primary  m-4 d-block">Delete my Account </a>
+                    <a asp-action="Edit" asp-route-Id="@Model.PatientId" class="btn btn-outline-primary  m-4 d-block"> Edit My Account</a>
+
+                </div>
+
+            </div>
+            <div class="row">
+                <h3 class="text-primary d-block">Next Appointments</h3>
+                @foreach (var app in ViewBag.Appoinments)
+                {
+            <div class="border border-primary p-3 m-2 bg-light w-100 text-center ">
+                <span class="ml-2 font-weight-bold ">Appointment Date : </span> <label>@app.Date</label><br />
+                <span class="ml-2 font-weight-bold ">Appointment Clinic : </span> <label> @app.Clinic</label><br />
+
+                <a asp-action="appDetails" asp-route-Id="@app.AppointmentId" class="btn btn-outline-primary">View Appoinment Details</a>
+            </div>
+                }
+            </div>
+
+        </div>
+        <div class="col">
+            <div class="col-sm-6 col-4 " input-group-append">
+                <input type="text" class="form-control w-100" placeholder="Search For Doctors" id="Searchname" aria-label="Search" aria-describedby="basic-addon2">
+
+                <table>
+                    @foreach (var doctor in ViewBag.DoctorsData)
+                    {
+                        <tr class="row parent ">
+                            <td class="col-sm-4">
+
+                                <img src="~/images/@doctor.Photo"
+                                     class="rounded-circle"
+                                     height="50" width="50"
+                                     asp-append-version="true" />
+                            </td>
+                            <td class="col-sm-3">
+                                <a class="as searchh ">@doctor.DocName</a>
+
+                            </td>
+                            <td class="col-sm-1">
+                            </td>
+                            <td class="col-sm-3">
+                                <a asp-action="Appointment" asp-route-Id="@doctor.DocId" Asp-route-IDD=@ViewData["userID"] class="btn btn-outline-primary ">Make An Appointment</a>
+                            </td>
+                        </tr>
+
+                    }
+
+                </table>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#Searchname").keyup(function () {
+            var searchtext = $("#Searchname").val().toLowerCase();
+            $(".searchh").each(function () {
+
+                var stringsearched = $(this).text().toLowerCase();
+                if (stringsearched.indexOf(searchtext) == -1) {
+                    $(this).closest('.parent').hide();
+
+                }
+                else {
+                    $(this).closest('.parent').show();
+                    console.log("hide")
+                }
+
+            });
+
+        });
+    });
+
+
+</script>
+

@@ -1,0 +1,83 @@
+﻿
+
+@model Doctor
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+    <div class="col-md-10 mx-auto py-4">
+        <div class="card">
+            <div class="card-header bg-primary text-uppercase text-white">
+                <h4>Edit Doctor  New </h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <form asp-action="Edit" asp-controller="Doctor">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input asp-for="DocId" hidden />
+                            <div class="form-group">
+                                <label asp-for="DocName" class="control-label"></label>
+                                <input asp-for="DocName" class="form-control" />
+                                <span asp-validation-for="DocName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Specialization" class="control-label"></label>
+                                <input asp-for="Specialization" class="form-control" />
+                                <span asp-validation-for="Specialization" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Phone" class="control-label"></label>
+                                <input asp-for="Phone" class="form-control" />
+                                <span asp-validation-for="Phone" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Email" class="control-label"></label>
+                                <input asp-for="Email" class="form-control" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Age" class="control-label"></label>
+                                <input asp-for="Age" class="form-control" />
+                                <span asp-validation-for="Age" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Gender" class="control-label"></label>
+                                <select asp-for="Gender" class="form-control">
+                                    <option value="">Choose Gender</option>
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
+                                </select>
+                                <span asp-validation-for="Gender" class="text-danger"></span>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label asp-for="Password" class="control-label"></label>
+                                <input asp-for="Password" class="form-control" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+
+
+
+
+                            <div class="form-group">
+                                <input type="submit" value="Edit" class="btn btn-primary" />
+                                <a class="btn-outline-primary" value="Back to Home " asp-action="DoctorHome" asp-route-Id="@Model.DocId" />
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+                </div>
+
+
+
+
+
+
+

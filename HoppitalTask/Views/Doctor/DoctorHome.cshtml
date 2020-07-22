@@ -1,0 +1,48 @@
+﻿@model Doctor
+@{
+    ViewData["Title"] = "DoctorHome";
+}
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-7 ">
+                <h1 class="ml-5 mt-5">@Model.DocName</h1>
+            </div>
+            <div class="col col-sm-5">
+
+                <img src="~/images/@Model.Photo"
+                     height="350" width="300"
+                     asp-append-version="true" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 ">
+                <h4 class="text-primary mt-3"> Genral Info</h4>
+                <span class="ml-2 font-weight-bold ">Phone : </span>  <label> @Model.Phone</label><br />
+                <span class="ml-2 font-weight-bold">Email : </span>  <label> @Model.Email</label><br />
+                <span class="ml-2 font-weight-bold">sepcialization  : </span>  <label> @Model.Specialization</label><br />
+                <span class="ml-2 font-weight-bold">Age : </span> <label>@Model.Age</label>
+            </div>
+            <div class="col-sm-6 text-center">
+
+                <a asp-action="Index" asp-controller="Clinic" class="btn btn-outline-primary  m-4 d-block">Manage clinics</a>
+                <a asp-action="Delete" asp-controller="Doctor" class="btn btn-outline-primary m-4 d-block"  asp-route-Id="@Model.DocId">Delete my Account </a>
+                <a asp-action="Edit" asp-route-Id="@Model.DocId" class="btn btn-outline-primary m-4 d-block" > Edit My Account</a>
+            </div>
+        </div>
+        <div class="row">
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+

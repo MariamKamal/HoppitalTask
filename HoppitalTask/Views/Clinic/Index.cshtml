@@ -1,0 +1,52 @@
+﻿@model IEnumerable<HoppitalTask.Models.Clinic>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Clinics Data</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-outline-primary" >Create New Clinic</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ClinicName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Doc)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr class="table  .table-striped" >
+            <td>
+                @Html.DisplayFor(modelItem => item.ClinicName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ClinicId" class="btn btn-primary">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ClinicId" class="btn btn-success">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ClinicId" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+        
+    </tbody>
+</table>

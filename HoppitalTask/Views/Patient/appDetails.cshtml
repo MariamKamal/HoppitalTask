@@ -1,0 +1,50 @@
+﻿@model HoppitalTask.Models.Appointment
+
+@{
+    ViewData["Title"] = "appDetails";
+}
+
+
+
+<div>
+    <h4 class="text-primary">Appointment</h4>
+    <hr />
+    <dl class="row ">
+
+        <dt class="col-sm-2">
+            <label>Doctor name </label>
+        </dt>
+        <dd class="col-sm-10">
+            <input value=@ViewData["docName"] readonly />
+
+        </dd>
+        <dt class="col-sm-2">
+            <label>D/Specialization </label>
+        </dt>
+        <dd class="col-sm-10">
+            <input value=@ViewData["specialization"] readonly />
+        </dd>
+        <dt class="col-sm-2">
+            <label>Patient Name  </label>
+        </dt>
+        <dd class="col-sm-10">
+            <input value=@ViewData["patientName"] readonly />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Clinic)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Clinic)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <a asp-action="PatiientHome" asp-route-Id="@Model.PatientId" class="btn-outline-primary">Back to Home</a>
+</div>
